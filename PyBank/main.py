@@ -9,36 +9,32 @@ with open(csvpath) as csvfile:
     #print(f"CSV Header: {csv_header}")
 
     datelist=[]
-    net=[]
+    profloss=[]
     change=[]
     for row in csvreader:
-        datelist.append([row[0]])
-        net.append(float(row[1]))
-    print(datelist)
-    print(net)
-    print(len(datelist))
-    print(sum(net))
+        datelist.append(row[0])
+        profloss.append(int(row[1]))
+    #print(datelist)
+    #print(profloss)
+    #print(len(datelist))
+    #print(sum(profloss))
 
-    for x in range(1,len(net)): #or range(0,len(net)-1)
-        change.append(net[x]-net[x-1]) 
-        avchange=(sum(change)/len(change))#sum of hcnages divided by total number of changes
-    print(avchange)
+    for x in range(1,len(profloss)): #or range(0,len(net)-1)
+        change.append(profloss[x]-profloss[x-1]) 
+        avchange="{:.2f}".format((sum(change)/len(change)))#sum of hcnages divided by total number of changes
 
-    #net=[]
-    #for row in csvreader:
-        #net.append(float(row[1]))
-    #print(net)
+    maxprof_index=change.index(max(change))
+    maxprof=max(change)
+    maxprof_month=datelist[maxprof_index+1]
+   
+    minprof_index=change.index(min(change))
+    minprof=min(change)
+    minprof_month=datelist[minprof_index+1]
 
-    #print(row[1])
-    #print(float(row[1])+100)
-
-    #net=0
-    #for row in csvreader:
-        #net += (float(row[1]))
-    #print(net)
-
-    #dictionary, key=name; value=votes candidate name and number of votes
-    #append everything in first for loop
-    #create empty dictionary
-
-    
+    print("Financial Analysis")
+    print("--------------------------")
+    print(f'Total Months: {len(datelist)}')
+    print(f'Total: ${sum(profloss)}')
+    print(f'Average Change: ${avchange}')
+    print(f'Greatest Increase in Profits: {maxprof_month} (${maxprof})')
+    print(f'Greatest Decrease in Profits: {minprof_month} (${minprof})')
