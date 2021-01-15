@@ -38,3 +38,18 @@ with open(csvpath) as csvfile:
     print(f'Average Change: ${avchange}')
     print(f'Greatest Increase in Profits: {maxprof_month} (${maxprof})')
     print(f'Greatest Decrease in Profits: {minprof_month} (${minprof})')
+
+    mystring=f"""
+    Financial Analysis
+    ----------------------------------
+    Total Months: {len(datelist)}
+    Total: ${sum(profloss)}
+    Average Change: ${avchange}
+    Greatest Increase in Profits: {maxprof_month} (${maxprof})
+    Greatest Decrease in Profits: {minprof_month} (${minprof})
+    """
+
+    # Specify the file to write to
+    txtoutput = open("Analysis/pybankoutput.txt", "w")
+    txtoutput.write(mystring)
+    output_path = os.path.join("Analysis", "pybankoutput.txt")
