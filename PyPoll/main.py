@@ -21,6 +21,12 @@ with open(csvpath) as csvfile:
         else:
             candidatedict[candidatename] += 1
 
-    print(candidatedict)
+    total_votes=len(voter_list)
+
+    for key, value in candidatedict.items():
+        print(f'{key}: ({(value/total_votes)*100})% ({value})')
+    
+    winner=max(candidatedict, key = candidatedict.get)
+    print(f'Winner: {winner}')
 
 
