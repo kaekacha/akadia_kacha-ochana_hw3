@@ -6,7 +6,7 @@ with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',') #to print data, could run print(csvreader)
     csv_header = next(csvreader) #to print data, could run print(f"CSV Header: {csv_header}")
 
-    datelist=[] #this variable and the two after create placeholder/empty lists for the variables
+    datelist=[] #this variable and the two after create placeholder/empty lists that will be filled out in the later commands
     profloss=[]
     change=[]
     for row in csvreader: 
